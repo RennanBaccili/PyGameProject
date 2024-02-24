@@ -34,18 +34,26 @@ clock = pygame.time.Clock()
 
 print('loop start')
 while True:
-    clock.tick(30)
+    clock.tick(60)
+    # esse loop está acontecendo 30 vezes por segundo
+    window.blit(source=bg_surf, dest=bg_rect)
+    window.blit(source=player1, dest=player1_rect)
+    pygame.display.flip()
+
+    pressed_key = pygame.key.get_pressed()
+    if pressed_key[pygame.K_w]:
+        player1_rect.centery -= 1
+    if pressed_key[pygame.K_s]:
+        player1_rect.centery += 1
+    if pressed_key[pygame.K_d]:
+        player1_rect.centerx += 1
+    if pressed_key[pygame.K_a]:
+        player1_rect.centerx -= 1
+        pass
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             print('loop end')
             pygame.quit()
             quit()
-
-    pressed_key = pygame.key.get_pressed()
-    if pressed_key[pygame.K_w]:
-        player1_rect.centery -= 1
-        window.blit(source=bg_surf, dest=bg_rect)
-        window.blit(source=player1, dest=player1_rect)
-        pygame.display.flip()
-        pass
     pass
