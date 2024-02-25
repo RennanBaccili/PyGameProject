@@ -38,6 +38,10 @@ class Menu:
             for event in pygame.event.get():
 
                 if event.type == pygame.KEYDOWN:
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        quit()
+
                     #Movimento de seleção de item
                     if event.key == pygame.K_DOWN and menu_option < len(MENU_OPTION):
                         menu_option += 1
@@ -48,9 +52,7 @@ class Menu:
                     if event.key == pygame.K_RETURN and menu_option == 3:
                         pygame.quit()
                         quit()
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        quit()
+
                     if event.key == pygame.K_RETURN:
                         return MENU_OPTION[menu_option]
 
