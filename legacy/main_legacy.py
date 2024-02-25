@@ -7,7 +7,7 @@
 import pygame
 from pygame import Surface, Rect
 
-# bg.png tamanho
+# menu_bg.png tamanho
 W_BACK = 576
 H_BACK = 324
 
@@ -18,7 +18,7 @@ print('setup start')
 window: Surface = pygame.display.set_mode((W_BACK, H_BACK))
 
 # carregar imagem e gerar uma superficie Surface
-bg_surf: Surface = pygame.image.load("../asset/bg.png").convert_alpha()
+bg_surf: Surface = pygame.image.load("../asset/menu_bg.png").convert_alpha()
 player1: Surface = pygame.image.load("../asset/player1.png").convert_alpha()
 
 # obter rertangulo a patir da superficie, para movimentala
