@@ -1,3 +1,8 @@
+# sites
+# https://craftpix.net/freebies/
+# https://freesound.org/
+# crtl alt l
+
 # Example file showing a basic pygame "game loop"
 import pygame
 from pygame import Surface, Rect
@@ -13,8 +18,8 @@ print('setup start')
 window: Surface = pygame.display.set_mode((W_BACK, H_BACK))
 
 # carregar imagem e gerar uma superficie Surface
-bg_surf: Surface = pygame.image.load("./asset/bg.png").convert_alpha()
-player1: Surface = pygame.image.load("./asset/player1.png").convert_alpha()
+bg_surf: Surface = pygame.image.load("../asset/bg.png").convert_alpha()
+player1: Surface = pygame.image.load("../asset/player1.png").convert_alpha()
 
 # obter rertangulo a patir da superficie, para movimentala
 bg_rect: Rect = bg_surf.get_rect(left=0, top=0)
@@ -32,9 +37,15 @@ print('setup end')
 # Colocar um relógio no jogo
 clock = pygame.time.Clock()
 
+# Carrregar musica e deixar ela tocando
+pygame.mixer_music.load('../asset/fase1.mp3')
+pygame.mixer_music.play(-1)
+pygame.mixer_music.set_volume(0.15)
+
 print('loop start')
 while True:
-    clock.tick(60)
+    clock.tick(100)
+    print(f'{clock.get_fps(): .0f}')
     # esse loop está acontecendo 30 vezes por segundo
     window.blit(source=bg_surf, dest=bg_rect)
     window.blit(source=player1, dest=player1_rect)
