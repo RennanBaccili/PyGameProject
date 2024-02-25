@@ -3,27 +3,60 @@
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import WIN_W
+from code.Const import WIN_W, COLOR_ORANGE, MENU_OPTION, COLOR_WHITE, COLOR_YELLOW
 
 
 class Menu:
     def __init__(self, window):
+        # inicia a janela e a imagem
         self.window: Surface = window
         self.surf = pygame.image.load('./asset/menu_bg.png')
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
-        # inicio o som do menu
+        # som menu
         pygame.mixer_music.load('./asset/menu_song.mp3')
         pygame.mixer_music.play(-1)
         pygame.mixer_music.set_volume(0.15)
 
-        # imagem do menu
+        # variable de escopo
+        menu_option = 0
+
         while True:
+            # Menu itens
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Mountain", (255, 128, 0), ((WIN_W / 2), 70))
+            self.menu_text(70, "Mountain", COLOR_ORANGE, ((WIN_W / 2), 60))
+            self.menu_text(60, "Shooter", COLOR_ORANGE, ((WIN_W / 2), 110))
+            for i in range(len(MENU_OPTION)):
+                if menu_option == i:
+                    self.menu_text(25, MENU_OPTION[i], COLOR_YELLOW, ((WIN_W / 2), 170 + 35 * i))
+                else:
+                    self.menu_text(25, MENU_OPTION[i], COLOR_WHITE, ((WIN_W / 2), 170 + 35 * i))
             pygame.display.flip()
 
+            # Eventos de tela
+            for event in pygame.event.get():
+
+                if event.type == pygame.KEYDOWN:
+                    #Movimento de seleção de item
+                    if event.key == pygame.K_DOWN and menu_option < len(MENU_OPTION):
+                        menu_option += 1
+                    if event.key == pygame.K_UP and menu_option > 0:
+                        menu_option -= 1
+
+                    # Eventos Kit
+                    if event.key == pygame.K_RETURN and menu_option == 3:
+                        pygame.quit()
+                        quit()
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        quit()
+                    if event.key == pygame.K_RETURN:
+                        return MENU_OPTION[menu_option]
+
+            pass
+
+    # menu_text, função para criar imagens a partir de texto
     def menu_text(self,
                   text_size: int,
                   text: str,
