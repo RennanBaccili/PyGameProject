@@ -14,7 +14,7 @@ WIN_W = 576
 WIN_H = 324
 
 # i
-IMAGE_LEVEL = {'level1': 5}
+IMAGE_LEVEL = {'Level1': 5}
 
 # speed
 ENTITY_SPEED = {'m1/1.png': 0,

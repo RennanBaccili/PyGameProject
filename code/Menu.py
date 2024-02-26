@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import sys
+
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
@@ -10,7 +12,7 @@ class Menu:
     def __init__(self, window):
         # inicia a janela e a imagem
         self.window: Surface = window
-        self.surf = pygame.image.load('./asset/menu_bg.png')
+        self.surf = pygame.image.load('./asset/menu_bg.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
@@ -32,7 +34,7 @@ class Menu:
                     self.menu_text(25, MENU_OPTION[i], COLOR_YELLOW, ((WIN_W / 2), 170 + 35 * i))
                 else:
                     self.menu_text(25, MENU_OPTION[i], COLOR_WHITE, ((WIN_W / 2), 170 + 35 * i))
-            pygame.display.flip()
+
 
             # Eventos de tela
             for event in pygame.event.get():
@@ -40,7 +42,7 @@ class Menu:
                 if event.type == pygame.KEYDOWN:
                     if event.type == pygame.QUIT:
                         pygame.quit()
-                        quit()
+                        sys.exit()
 
                     #Movimento de seleção de item
                     if event.key == pygame.K_DOWN and menu_option < len(MENU_OPTION):
@@ -55,7 +57,7 @@ class Menu:
 
                     if event.key == pygame.K_RETURN:
                         return MENU_OPTION[menu_option]
-
+                pygame.display.flip()
             pass
 
     # menu_text, função para criar imagens a partir de texto
@@ -65,7 +67,7 @@ class Menu:
                   text_color: tuple,
                   text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont("Lacida Sans Typewriter", size=text_size)
-        text_surf: Surface = text_font.render(text, True, text_color)
+        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.window.blit(source=text_surf, dest=text_rect)
         # para atualizar a imagem, que no caso é texto criado
