@@ -5,7 +5,10 @@ from code.Background import Background
 
 class EntityFactory:
     @staticmethod
-    def get_entity(entity_name: str, position: tuple):
+    def get_entity(entity_name: str, position: tuple = (0, 0)):
         match entity_name:
             case 'Level1':
-                return Background(f'm1/5.png', position)
+                list_bg = []
+                for i in range(1, 5):
+                    list_bg.append(Background(f'm1/{i}.png', position))
+                return list_bg

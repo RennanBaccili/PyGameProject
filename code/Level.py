@@ -13,7 +13,7 @@ class Level:
         self.window: Surface = window
         self.mode = menu_option
         self.entity_list: list[Entity] = []
-        self.entity_list.append(EntityFactory.get_entity('Level1', (0, 0)))
+        self.entity_list.extend(EntityFactory.get_entity('Level1'))
 
     def run(self):
         while True:

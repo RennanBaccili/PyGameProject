@@ -13,3 +13,6 @@ MENU_OPTION = ('NEW GAME 1P',
 # Tamanho
 WIN_W = 576
 WIN_H = 324
+
+#i
+IMAGE_LEVEL = {'level1': 5}
