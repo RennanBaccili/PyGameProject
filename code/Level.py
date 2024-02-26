@@ -6,7 +6,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import COLOR_WHITE
+from code.Const import COLOR_WHITE, MENU_OPTION
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 
@@ -19,6 +19,10 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1'))
         self.entity_list.append(EntityFactory.get_entity('Player1'))
+        if menu_option in [MENU_OPTION[1], MENU_OPTION[2]]:
+            player2 = self.entity_list.append(EntityFactory.get_entity('Player2'))
+            print(player2)
+
 
     def run(self, ):
         # musica

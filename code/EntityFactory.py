@@ -12,9 +12,11 @@ class EntityFactory:
             case level if level in IMAGE_LEVEL:
                 list_bg = []
                 for i in range(1, IMAGE_LEVEL[level]):
-                    list_bg.append(Background(f'm1/{i}.png', position))
-                    list_bg.append(Background(f'm1/{i}.png', (WIN_W, 0)))
+                    list_bg.append(Background(f'levels/m1/{i}.png', position))
+                    list_bg.append(Background(f'levels/m1/{i}.png', (WIN_W, 0)))
                 return list_bg
             case 'Player1':
-                return Player(f'm1/player1.png', (10, WIN_H/2))
+                return Player(f'players/player1.png', (10, WIN_H / 2))
+            case 'Player2':
+                return Player(f'players/player2.png', (10, WIN_H / 1.5))
 
