@@ -9,4 +9,5 @@ class Background(Entity):
         super().__init__(name, position)
 
     def move(self):
+        self.rect.centerx -= 1
         pass
