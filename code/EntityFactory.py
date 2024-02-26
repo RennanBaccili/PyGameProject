@@ -1,7 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import random
+
 from code.Background import Background
 from code.Const import WIN_W, IMAGE_LEVEL, WIN_H
+from code.Enemy import Enemy
 from code.Player import Player
 
 
@@ -19,4 +22,7 @@ class EntityFactory:
                 return Player(f'players/player1.png', (10, WIN_H / 2))
             case 'Player2':
                 return Player(f'players/player2.png', (10, WIN_H / 1.5))
-
+            case 'Enemy1':
+                return Enemy(f'enemy/enemy1.png', (WIN_W + 40, random.randint(0,  WIN_H -40)))
+            case 'Enemy2':
+                return Enemy(f'enemy/enemy2.png', (WIN_W + 40, random.randint(0, WIN_H -40)))

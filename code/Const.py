@@ -18,12 +18,17 @@ WIN_H = 324
 # i
 IMAGE_LEVEL = {'Level1': 5}
 
+# event_enemy
+EVENT_ENEMY = pygame.USEREVENT + 1
+
 # speed
 ENTITY_SPEED = {'levels/m1/1.png': 0,
                 'levels/m1/2.png': 1,
                 'levels/m1/3.png': 2,
                 'levels/m1/4.png': 3,
                 'levels/m1/5.png': 4,
+                'enemy/enemy1.png': 1,
+                'enemy/enemy2.png': 2
                 }
 
 PLAYER_KEY_UP = {'players/player1.png': pygame.K_UP,
